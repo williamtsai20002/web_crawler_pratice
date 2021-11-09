@@ -1,0 +1,9 @@
+CREATE TABLE user (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL, password VARCHAR(255), organizes VARCHAR(255));
+CREATE TABLE organize (id INT AUTO_INCREMENT PRIMARY KEY, class_id INT, organize_name VARCHAR(255), users VARCHAR(255));
+CREATE TABLE class (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT NOT NULL, class_name VARCHAR(255), organize_id INT, FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE, FOREIGN KEY (organize_id) REFERENCES organize(id) ON DELETE CASCADE);
+CREATE TABLE main_table (id INT AUTO_INCREMENT PRIMARY KEY, class_id INT NOT NULL, FOREIGN KEY (class_id) REFERENCES class(id) ON DELETE CASCADE);
+
+drop table main_table;
+drop table class;
+drop table organize;
+drop table user;
